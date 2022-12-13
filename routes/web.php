@@ -19,3 +19,18 @@ Route::get('/', function () {
         "quotes" => Quotes::all()
     ]);
 });
+
+Route::get('/create', function () {
+    return view('create');
+});
+
+Route::post('/store', function () {
+    $formFields = request()->validate([
+        'author' => 'required',
+        'quote' => 'required',
+    ]);
+
+    Quotes::create($formFields);
+
+    return redirect('/');
+});
