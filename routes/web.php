@@ -49,3 +49,8 @@ Route::put('/update/{quote}', function (Quotes $quote) {
 
     return redirect('/');
 });
+
+Route::delete('/delete/{quote}', function (Quotes $quote) {
+    $quote->delete();
+    return redirect('/');
+});

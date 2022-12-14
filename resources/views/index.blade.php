@@ -7,6 +7,11 @@
             <span>{{ $q->author }}</span>
             <div>
                 <a href="/edit/{{ $q->id }}">edit</a>
+                <form action="/delete/{{ $q->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button>delete</button>
+                </form>
             </div>
         </div>
     @endforeach
