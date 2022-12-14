@@ -1,12 +1,11 @@
 <x-layout>
-    <h1>Edit Quote</h1>
-    <form action="/update/{{ $quote->id }}" method="POST">
+    <h1>Create Quote</h1>
+    <form action="/quotes/store" method="POST">
         @csrf
-        @method('PUT')
         <div>
             <label>
                 Author
-                <input type="text" name="author" value="{{ $quote->author }}">
+                <input type="text" name="author" value="{{ old('author') }}">
             </label>
             @error('author')
                 <span>{{ $message }}</span>
@@ -15,12 +14,12 @@
         <div>
             <label>
                 Quote
-                <textarea name="quote">{{ $quote->quote }}</textarea>
+                <textarea name="quote">{{ old('quote') }}</textarea>
             </label>
             @error('quote')
                 <span>{{ $message }}</span>
             @enderror
         </div>
-        <button>Edit</button>
+        <button>Create</button>
     </form>
 </x-layout>

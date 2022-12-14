@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Quotes;
-
+use App\Http\Controllers\QuotesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,43 +13,9 @@ use App\Models\Quotes;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        "quotes" => Quotes::all()
-    ]);
-});
-
-Route::get('/create', function () {
-    return view('create');
-});
-
-Route::post('/store', function () {
-    $formFields = request()->validate([
-        'author' => 'required',
-        'quote' => 'required',
-    ]);
-
-    Quotes::create($formFields);
-
-    return redirect('/');
-});
-
-Route::get('/edit/{quote}', function (Quotes $quote) {
-    return view('edit', [ 'quote' => $quote]);
-});
-
-Route::put('/update/{quote}', function (Quotes $quote) {
-    $formFields = request()->validate([
-        'author' => 'required',
-        'quote' => 'required',
-    ]);
-
-    $quote->update($formFields);
-
-    return redirect('/');
-});
-
-Route::delete('/delete/{quote}', function (Quotes $quote) {
-    $quote->delete();
-    return redirect('/');
-});
+Route::get('/', [QuotesController::class, 'index']);
+Route::get('/quotes/create', [QuotesController::class, 'create']);
+Route::post('/quotes/store', [QuotesController::class, 'store']);
+Route::get('/quotes/{quote}/edit', [QuotesController::class, 'edit']);
+Route::put('/quotes/{quote}/update', [QuotesController::class, 'update']);
+Route::delete('/quotes/{quote}/delete', [QuotesController::class, 'delete']);
