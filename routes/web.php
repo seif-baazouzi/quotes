@@ -34,3 +34,18 @@ Route::post('/store', function () {
 
     return redirect('/');
 });
+
+Route::get('/edit/{quote}', function (Quotes $quote) {
+    return view('edit', [ 'quote' => $quote]);
+});
+
+Route::put('/update/{quote}', function (Quotes $quote) {
+    $formFields = request()->validate([
+        'author' => 'required',
+        'quote' => 'required',
+    ]);
+
+    $quote->update($formFields);
+
+    return redirect('/');
+});
