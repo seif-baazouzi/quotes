@@ -28,4 +28,24 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    function showLogin()
+    {
+        return view('auth.login');
+    }
+
+    function handleLogin()
+    {
+        $formFields = request()->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            request()->session()->regenerate();
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email', 'Invalid Email or Password']);
+    }
 }
