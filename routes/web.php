@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,6 @@ Route::post('/quotes/store', [QuotesController::class, 'store']);
 Route::get('/quotes/{quote}/edit', [QuotesController::class, 'edit']);
 Route::put('/quotes/{quote}/update', [QuotesController::class, 'update']);
 Route::delete('/quotes/{quote}/delete', [QuotesController::class, 'delete']);
+
+Route::get('/signup', [UserController::class, 'showSignup']);
+Route::post('/signup', [UserController::class, 'handleSignup']);
