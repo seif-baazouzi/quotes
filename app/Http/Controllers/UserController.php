@@ -48,4 +48,10 @@ class UserController extends Controller
 
         return back()->withErrors(['email', 'Invalid Email or Password']);
     }
+
+    function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
 }
