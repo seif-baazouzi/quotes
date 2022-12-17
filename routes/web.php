@@ -16,16 +16,16 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [QuotesController::class, 'index']);
-Route::get('/quotes/create', [QuotesController::class, 'create']);
-Route::post('/quotes/store', [QuotesController::class, 'store']);
-Route::get('/quotes/{quote}/edit', [QuotesController::class, 'edit']);
-Route::put('/quotes/{quote}/update', [QuotesController::class, 'update']);
-Route::delete('/quotes/{quote}/delete', [QuotesController::class, 'delete']);
+Route::get('/quotes/create', [QuotesController::class, 'create'])->middleware('auth');
+Route::post('/quotes/store', [QuotesController::class, 'store'])->middleware('auth');
+Route::get('/quotes/{quote}/edit', [QuotesController::class, 'edit'])->middleware('auth');
+Route::put('/quotes/{quote}/update', [QuotesController::class, 'update'])->middleware('auth');
+Route::delete('/quotes/{quote}/delete', [QuotesController::class, 'delete'])->middleware('auth');
 
-Route::get('/signup', [UserController::class, 'showSignup']);
-Route::post('/signup', [UserController::class, 'handleSignup']);
+Route::get('/signup', [UserController::class, 'showSignup'])->middleware('guest');
+Route::post('/signup', [UserController::class, 'handleSignup'])->middleware('guest');
 
-Route::get('/login', [UserController::class, 'showLogin']);
-Route::post('/login', [UserController::class, 'handleLogin']);
+Route::get('/login', [UserController::class, 'showLogin'])->name('login')->middleware('guest');
+Route::post('/login', [UserController::class, 'handleLogin'])->middleware('guest');
 
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');

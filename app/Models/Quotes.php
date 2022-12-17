@@ -9,5 +9,10 @@ class Quotes extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ "author", "quote" ];
+    protected $fillable = ['author', 'quote', 'user'];
+
+    function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

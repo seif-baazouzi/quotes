@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Quotes;
 
-use Illuminate\Http\Request;
-
 class QuotesController extends Controller
 {
     function index()
@@ -27,6 +25,7 @@ class QuotesController extends Controller
             'quote' => 'required',
         ]);
 
+        $formFields['user'] = auth()->id();
         Quotes::create($formFields);
 
         return redirect('/');
@@ -34,11 +33,14 @@ class QuotesController extends Controller
 
     function edit(Quotes $quote)
     {
+        if ($quote->user != auth()->id()) return redirect('/');
         return view('quotes.edit', ['quote' => $quote]);
     }
 
     function update(Quotes $quote)
     {
+        if ($quote->user != auth()->id()) return redirect('/');
+
         $formFields = request()->validate([
             'author' => 'required',
             'quote' => 'required',
@@ -51,6 +53,8 @@ class QuotesController extends Controller
 
     function delete(Quotes $quote)
     {
+        if ($quote->user != auth()->id()) return redirect('/');
+
         $quote->delete();
         return redirect('/');
     }

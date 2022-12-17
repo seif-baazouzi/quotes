@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("quote");
             $table->string("author");
+            $table->foreignId("user")->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
