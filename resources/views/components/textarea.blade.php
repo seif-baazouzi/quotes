@@ -1,0 +1,1 @@
+<textarea {{ $attributes }} class="block w-full h-28 rounded-md bg-gray-100 p-2 focus:border-indigo-500">{{ $slot }}</textarea>

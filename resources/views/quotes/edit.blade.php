@@ -1,26 +1,26 @@
 <x-layout>
-    <h1>Edit Quote</h1>
-    <form action="/quotes/{{ $quote->id }}/update" method="POST">
+    <x-form action="/quotes/{{ $quote->id }}/update" method="POST">
         @csrf
         @method('PUT')
+        <x-title>Edit Quote</x-title>
         <div>
-            <label>
+            <x-label>
                 Author
-                <input type="text" name="author" value="{{ $quote->author }}">
-            </label>
+                <x-input type="text" name="author" value="{{ $quote->author }}" />
+            </x-label>
             @error('author')
-                <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 Quote
-                <textarea name="quote">{{ $quote->quote }}</textarea>
-            </label>
+                <x-textarea name="quote">{{ $quote->quote }}</x-textarea>
+            </x-label>
             @error('quote')
-                <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
-        <button>Edit</button>
-    </form>
+        <x-button>Edit</x-button>
+    </x-form>
 </x-layout>

@@ -1,44 +1,44 @@
 <x-layout>
-    <h1>Signup</h1>
 
-    <form action="/signup" method="POST">
+    <x-form action="/signup" method="POST">
         @csrf
+        <x-title>Signup</x-title>
         <div>
-            <label>
+            <x-label>
                 Name
-                <input type="text" name="name" value="{{ old('name') }}">
-            </label>
+                <x-input type="text" name="name" value="{{ old('name') }}" />
+            </x-label>
             @error('name')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 E-mail
-                <input type="text" name="email" value="{{ old('email') }}">
-            </label>
+                <x-input type="text" name="email" value="{{ old('email') }}" />
+            </x-label>
             @error('email')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 Password
-                <input type="password" name="password">
-            </label>
+                <x-input type="password" name="password" />
+            </x-label>
             @error('password')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 Confirm
-                <input type="password" name="password_confirmation">
-            </label>
+                <x-input type="password" name="password_confirmation" />
+            </x-label>
             @error('password_confirmation')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
-        <button>Signup</button>
-    </form>
+        <x-button>Signup</x-button>
+    </x-form>
 </x-layout>

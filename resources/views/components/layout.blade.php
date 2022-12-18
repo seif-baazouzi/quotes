@@ -5,20 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quotes</title>
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    </style>
+    @vite('resources/js/app.js')
 </head>
 
 <body>
     <x-nav-bar />
-    <main>{{ $slot }}</main>
+    <main style="margin-top: 3.5rem; height: calc(100vh - 3.5rem)">{{ $slot }}</main>
 </body>
 
 </html>

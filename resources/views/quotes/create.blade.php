@@ -1,25 +1,25 @@
 <x-layout>
-    <h1>Create Quote</h1>
-    <form action="/quotes/store" method="POST">
+    <x-form action="/quotes/store" method="POST">
         @csrf
+        <x-title>Create Quote</x-title>
         <div>
-            <label>
+            <x-label>
                 Author
-                <input type="text" name="author" value="{{ old('author') }}">
-            </label>
+                <x-input type="text" id="author" name="author" value="{{ old('author') }}" />
+            </x-label>
             @error('author')
-                <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 Quote
-                <textarea name="quote">{{ old('quote') }}</textarea>
-            </label>
+                <x-textarea name="quote">{{ old('quote') }}</x-textarea>
+            </x-label>
             @error('quote')
-                <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
-        <button>Create</button>
-    </form>
+        <x-button>Create</x-button>
+    </x-form>
 </x-layout>

@@ -1,0 +1,1 @@
+<input {{ $attributes }} class="block w-full rounded-md bg-gray-100 p-2 focus:border-indigo-500" />

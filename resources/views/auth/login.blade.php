@@ -1,26 +1,25 @@
 <x-layout>
-    <h1>Login</h1>
-
-    <form action="/login" method="POST">
+    <x-form action="/login" method="POST">
         @csrf
+        <x-title>Login</x-title>
         <div>
-            <label>
+            <x-label>
                 E-mail
-                <input type="text" name="email" value="{{ old('email') }}">
-            </label>
+                <x-input type="text" name="email" value="{{ old('email') }}" />
+            </x-label>
             @error('email')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
         <div>
-            <label>
+            <x-label>
                 Password
-                <input type="password" name="password">
-            </label>
+                <x-input type="password" name="password" />
+            </x-label>
             @error('password')
-            <span>{{ $message }}</span>
+            <x-error>{{ $message }}</x-error>
             @enderror
         </div>
-        <button>Login</button>
-    </form>
+        <x-button>Login</x-button>
+    </x-form>
 </x-layout>

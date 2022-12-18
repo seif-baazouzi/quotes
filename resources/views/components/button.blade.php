@@ -1,0 +1,1 @@
+<button class="block ml-auto text-md bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">{{ $slot }}</button>
